@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { Text, TouchableOpacity, FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import PalettePreview from '../components/PalettePreview';
 
 const SOLARIZED = [
@@ -48,16 +48,27 @@ const COLOR_PALETTES = [
 const Home = ({ navigation }) => {
     return (
         <FlatList
+            style={styles.list}
             data={COLOR_PALETTES}
             keyExtractor={item => item.paletteName}
             renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => navigation.navigate('ColorPalette', item)}>
-                    <Text>{item.paletteName}</Text>
-                </TouchableOpacity>
+                <PalettePreview
+                    handlePress={() => {
+                        navigation.navigate('ColorPalette', item);
+                    }}
+                    colorPalette={item}
+                />
             )}
         />
     );
 };
+
+const styles = StyleSheet.create({
+    list: {
+        padding: 10,
+        backgroundColor: 'white',
+    },
+});
 
 
 export default Home;

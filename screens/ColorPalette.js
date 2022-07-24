@@ -1,22 +1,20 @@
-import React from "react";
-import { View, Text, SafeAreaView, StyleSheet, FlatList } from 'react-native';
-import ColorBox from "../components/ColorBox";
-
+/* eslint-disable prettier/prettier */
+import React from 'react';
+import { FlatList, StyleSheet, Text } from 'react-native';
+import ColorBox from '../components/ColorBox';
 
 const ColorPalette = ({ route }) => {
     const { colors, paletteName } = route.params;
     return (
-
         <FlatList
+            keyExtractor={(item) => item.hexCode}
             style={styles.container}
             data={colors}
-            keyExtractor={item => item.hexCode}
             renderItem={({ item }) => (
-                <ColorBox hexCode={item.hexCode} colorName={item.colorName} />
+                <ColorBox colorName={item.colorName} hexCode={item.hexCode} />
             )}
             ListHeaderComponent={<Text style={styles.heading}>{paletteName}</Text>}
         />
-
     );
 };
 
@@ -24,7 +22,7 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 10,
         paddingTop: 10,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     heading: {
         fontSize: 18,
@@ -33,7 +31,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 18,
-    }
+    },
 });
 
 export default ColorPalette;
