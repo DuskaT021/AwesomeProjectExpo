@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
@@ -14,11 +15,11 @@ const ColorBox = ({ colorName, hexCode }) => {
     };
 
     return (
-        <View style={[styles.box, boxColor]} >
+        <View style={[styles.box, boxColor]}>
             <Text style={[styles.boxText, textColor]}>
                 {colorName}: {hexCode}
             </Text>
-        </View >
+        </View>
     );
 };
 // destructure the properties
@@ -32,20 +33,23 @@ const ColorBox = ({ colorName, hexCode }) => {
 //     );
 // };
 
-const styles = StyleSheet.create(
-    {
-        box: {
-            padding: 10,
-            borderRadius: 3,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: 10,
-        },
-        // cyan: { backgroundColor: '#2aa198', },
-        boxText: {
-            fontWeight: 'bold',
-            color: 'white',
-        },
-    }
-);
+const styles = StyleSheet.create({
+    box: {
+        padding: 10,
+        borderRadius: 3,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.3,
+        shadowRadius: 1,
+        elevation: 2,
+    },
+    // cyan: { backgroundColor: '#2aa198', },
+    boxText: {
+        fontWeight: 'bold',
+        color: 'white',
+    },
+});
 export default ColorBox;

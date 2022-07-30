@@ -7,7 +7,8 @@ const PalettePreview = ({ handlePress, colorPalette }) => {
         <TouchableOpacity onPress={handlePress}>
             <Text style={styles.text}>{colorPalette.paletteName}</Text>
             <FlatList
-                horizontal={true}
+                style={styles.list}
+                // horizontal={true}
                 data={colorPalette.colors.slice(0, 5)}
                 keyExtractor={item => item.colorName}
                 renderItem={({ item }) =>
@@ -27,6 +28,11 @@ const styles = StyleSheet.create({
         height: 30,
         width: 30,
         marginRight: 10,
+
+    },
+    list: {
+        marginBottom: 20,
+        flexDirection: 'row',
     },
 });
 export default PalettePreview;
