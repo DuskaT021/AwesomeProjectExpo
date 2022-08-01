@@ -16,7 +16,7 @@ const Home = ({ navigation }) => {
 
     useEffect(() => {
         fetchColorPalettes();
-    }, []);
+    });
     return (
         <FlatList
             style={styles.list}
@@ -29,7 +29,10 @@ const Home = ({ navigation }) => {
                     }}
                     colorPalette={item}
                 />
+
             )}
+            refreshing={true}
+            onRefresh={() => { }}
         />
     );
 };
