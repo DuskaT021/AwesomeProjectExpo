@@ -7,19 +7,20 @@ import ColorPalette from './screens/ColorPalette';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
+const MainStack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen
+      <RootStack.Navigator>
+        <RootStack.Screen name="Home" component={Home} />
+        <RootStack.Screen
           name="ColorPalette"
           component={ColorPalette}
           options={({ route }) => ({ title: route.params.paletteName })}
         />
-      </Stack.Navigator>
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };
