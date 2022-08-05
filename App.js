@@ -6,19 +6,36 @@ import Home from './screens/Home';
 import ColorPalette from './screens/ColorPalette';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import ColorPaletteModal from './screens/ColorPaletteModal';
 
 const RootStack = createStackNavigator();
 const MainStack = createStackNavigator();
-
+// https://frontendmasters.com/courses/react-native-v2/opening-a-full-screen-modal/
+// 2:00
+const MainStackScreen = () => {
+  return (
+    <MainStack.Navigator>
+      <MainStack.Screen name="Home" component={Home} />
+      <MainStack.Screen
+        name="ColorPalette"
+        component={ColorPalette}
+        options={({ route }) => ({ title: route.params.paletteName })}
+      />
+    </MainStack.Navigator>
+  );
+};
 const App = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator>
-        <RootStack.Screen name="Home" component={Home} />
+      <RootStack.Navigator mode="modal">
         <RootStack.Screen
-          name="ColorPalette"
-          component={ColorPalette}
-          options={({ route }) => ({ title: route.params.paletteName })}
+          name="Main"
+          component={MainStackScreen}
+          options={{ headerShown: false }}
+        />
+        <RootStack.Screen
+          name="ColorPaletteModal"
+          component={ColorPaletteModal}
         />
       </RootStack.Navigator>
     </NavigationContainer>
