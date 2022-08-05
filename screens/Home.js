@@ -52,6 +52,7 @@ trigger the refresh, once the user pulls to refresh */}
 
 const styles = StyleSheet.create({
     list: {
+        flex: 1,
         padding: 10,
         backgroundColor: 'white',
     },
