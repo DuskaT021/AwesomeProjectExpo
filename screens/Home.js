@@ -1,12 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useCallback, useEffect } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, TouchableOpacity, Text } from 'react-native';
+
 import PalettePreview from '../components/PalettePreview';
 
 const Home = ({ navigation }) => {
     const [colorPalettes, setColorPalettes] = useState([]);
     const [isRefreshing, setIsRefreshing] = useState(false);
-    {/* it is set to false, we only wna to 
+    // eslint-disable-next-line no-lone-blocks
+    {/* it is set to false, we only wna to
 trigger the refresh, once the user pulls to refresh */}
     const fetchColorPalettes = useCallback(async () => {
         const result = await fetch('https://color-palette-api.kadikraman.now.sh/palettes',);
@@ -46,6 +48,13 @@ trigger the refresh, once the user pulls to refresh */}
             )}
             refreshing={isRefreshing}
             onRefresh={handleRefresh}
+            ListHeaderComponent={
+                <TouchableOpacity
+                    onPress={() => {
+                        navigation.navigate('ColorPaletteModal');
+                    }}>
+                    <Text>Launch Modal</Text>
+                </TouchableOpacity>}
         />
     );
 };

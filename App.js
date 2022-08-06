@@ -10,8 +10,7 @@ import ColorPaletteModal from './screens/ColorPaletteModal';
 
 const RootStack = createStackNavigator();
 const MainStack = createStackNavigator();
-// https://frontendmasters.com/courses/react-native-v2/opening-a-full-screen-modal/
-// 2:00
+
 const MainStackScreen = () => {
   return (
     <MainStack.Navigator>
@@ -24,10 +23,11 @@ const MainStackScreen = () => {
     </MainStack.Navigator>
   );
 };
+
 const App = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator screenOptions={{ presentation: 'modal' }}>
+      <RootStack.Navigator mode="modal">
         <RootStack.Screen
           name="Main"
           component={MainStackScreen}
